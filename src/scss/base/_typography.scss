@@ -1,0 +1,32 @@
+.dd-u-h1,
+h1,
+.dd-u-h2,
+h2,
+.dd-u-h3,
+h3,
+.dd-u-h4,
+h4,
+.dd-u-h5,
+h5,
+.dd-u-h6,
+h6 {
+	color: var(--gray-700);
+	font-family: var(--font-family-1);
+	line-height: 1.5;
+	margin-bottom: 1rem;
+	margin-top: 0;
+	max-width: 700px;
+}
+
+.dd-u-h1,
+h1 {
+	font-size: var(--size-h1);
+	font-weight: 400;
+	letter-spacing: 0.1rem;
+}
+
+p {
+	color: var(--gray-800);
+	line-height: 1.35;
+	max-width: 700px;
+}
