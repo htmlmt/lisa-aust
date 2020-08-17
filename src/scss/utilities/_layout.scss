@@ -1,0 +1,33 @@
+.u-masonry {
+	columns: 3 100px;
+}
+
+.u-masonry > * {
+	display: inline-block;
+	margin: 0 1rem 1rem 0;
+	width: 100%;
+}
+
+.u-wrapper {
+	padding-left: var(--spacing-4xl);
+	padding-right: var(--spacing-4xl);
+}
+
+@media only screen and (max-width: 900px) {
+	.u-wrapper {
+		padding-left: var(--spacing-xl);
+		padding-right: var(--spacing-xl);
+	}
+	
+	.md\:u-static {
+		position: static;
+	}
+	
+	.md\:u-block {
+		display: block;
+	}
+	
+	.md\:u-hidden {
+		display: none;
+	}
+}

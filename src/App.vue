@@ -1,9 +1,9 @@
 <template>
-    <div class="dd-u-flex" id="app">
+    <div class="dd-u-flex md:u-block" id="app">
         <Nav />
         
-        <div class="u-pl-250">
-            <div class="u-px-3xl u-py-xl dd-u-flex-1">
+        <div class="u-pl-250 dd-u-w-full md:u-pl-0">
+            <div class="dd-u-flex-1">
                 <router-view/>
             </div>
         </div>
@@ -17,12 +17,14 @@ export default {
     name: 'App',
     components: {
         Nav
-    }
+    },
 }
 </script>
 
 <style lang="scss">
     :root {
+        --wrapper-width: 1000px;
+        
         --spacing-xs: .5rem;
         --spacing-sm: .75rem;
         --spacing-md: 1rem;
@@ -42,7 +44,7 @@ export default {
         --font-size-4xl: 2rem;
         --font-size-5xl: 2.25rem;
         
-        --font-family-1: 'Varela Round', sans-serif;
+        --font-family-1: 'Quicksand', sans-serif;
         --size-h1: var(--font-size-5xl);
         
         --gray-100: #f7fafc;
@@ -55,17 +57,23 @@ export default {
         --gray-900: #1a202c;
         
         --blue-200: #bee3f8;
+        --blue-900: #130b2c;
         
-        --purple-300: #d6bcfa;
+        --pink-300: #db3d77;
+        --pink-400: #b53463;
+        
+        --tan-300: #a98a73;
     }
     
     body {
-        font-family: 'Open Sans', sans-serif;
+        font-family: 'Roboto', sans-serif;
     }
     
     @import "@/scss/base/_typography.scss";
     @import "@/scss/base/_images.scss";
+    @import "@/scss/base/_forms.scss";
     
+    @import "@/scss/utilities/_layout.scss";
     @import "@/scss/utilities/_spacing.scss";
     @import "@/scss/utilities/_sizing.scss";
     @import "@/scss/utilities/_typography.scss";

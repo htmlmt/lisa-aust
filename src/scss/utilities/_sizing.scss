@@ -1,4 +1,8 @@
 // Width
+.u-w-25 {
+	width: 25px;
+}
+
 .u-w-250 {
 	width: 250px;
 }
@@ -15,4 +19,22 @@
 // Height
 .u-h-1 {
 	height: 1px;
+}
+
+.u-h-25 {
+	height: 25px;
+}
+
+@media only screen and (max-width: 900px) {
+	.md\:u-h-auto {
+		height: auto;
+	}
+	
+	.md\:u-w-full {
+		width: 100%;
+	}
+	
+	.md\:u-w-100 {
+		width: 100px;
+	}
 }

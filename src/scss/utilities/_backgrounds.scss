@@ -5,3 +5,41 @@
 .u-bg-gray-300 {
 	background-color: var(--gray-300);
 }
+
+.u-bg-blue-200 {
+	background-color: var(--blue-200);
+}
+
+.u-bg-blue-200 {
+	background-color: var(--blue-200);
+}
+
+.u-bg-pink-300 {
+	background-color: var(--pink-300);
+}
+
+.u-bg-overlay-bottom {
+	&::after {
+		background: linear-gradient(to bottom, transparent, black 100%);
+		bottom: 0;
+		content: '';
+		height: 200px;
+		left: 0;
+		position: absolute;
+		width: 100%;
+		z-index: 10;
+	}
+}
+
+.u-bg-overlay-top {
+	&::before {
+		background: linear-gradient(to top, transparent, black 100%);
+		content: '';
+		left: 0;
+		height: 80px;
+		position: absolute;
+		top: 0;
+		width: 100%;
+		z-index: 20;
+	}
+}

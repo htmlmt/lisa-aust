@@ -493,14 +493,37 @@
 	gap: var(--spacing-lg);
 }
 
-.u-gap-sm {
-	gap: var(--spacing-sm);
+.u-gap-xl {
+	gap: var(--spacing-xl);
 }
 
-.u-gap-sm {
-	gap: var(--spacing-sm);
+.u-gap-2xl {
+	gap: var(--spacing-2xl);
 }
 
-.u-gap-sm {
-	gap: var(--spacing-sm);
+.u-gap-3xl {
+	gap: var(--spacing-3xl);
+}
+
+@media only screen and (max-width: 900px) {
+	.md\:u-mb-0 {
+		margin-bottom: 0;
+	}
+	
+	.md\:u-mx-auto {
+		margin-left: auto;
+		margin-right: auto;
+	}
+	
+	.md\:u-pl-0 {
+		padding-left: 0;
+	}
+	
+	.md\:u-pt-0 {
+		padding-top: 0;
+	}
+	
+	.md\:u-p-0 {
+		padding: 0;
+	}
 }

@@ -1,5 +1,5 @@
 <template>
-	<router-link class="link u-pl-3xl u-text-gray-900 dd-u-flex dd-u-no-underline" :to="{ name: view }">{{ text }}</router-link>
+	<router-link class="link u-pl-3xl u-py-md u-text-gray-900 dd-u-flex dd-u-no-underline" :to="{ name: view }">{{ text }}</router-link>
 </template>
 
 <script>
@@ -18,6 +18,7 @@ export default {
 
 <style lang="scss">
 	.link.router-link-exact-active {
-		background-color: var(--purple-300);
+		background-color: var(--pink-300);
+		color: white;
 	}
 </style>

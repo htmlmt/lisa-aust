@@ -13,27 +13,37 @@ const routes = [
     {
         path: '/meet-lisa',
         name: 'meet',
-        component: () => import(/* webpackChunkName: "meet" */ '../views/Meet.vue')
+        component: () => import(/* webpackChunkName: "meet" */ '../views/MeetLisa.vue')
     },
     {
-        path: '/corporate-photography',
-        name: 'corporate',
-        component: () => import(/* webpackChunkName: "corporate" */ '../views/Corporate.vue')
+        path: '/professional-portraits',
+        name: 'professional',
+        component: () => import(/* webpackChunkName: "professional" */ '../views/ProfessionalPortraits.vue')
     },
     {
-        path: '/event-photography',
+        path: '/event-photos',
         name: 'event',
-        component: () => import(/* webpackChunkName: "event" */ '../views/Event.vue')
+        component: () => import(/* webpackChunkName: "event" */ '../views/EventPhotos.vue')
     },
     {
-        path: '/lifestyle-photography',
-        name: 'lifestyle',
-        component: () => import(/* webpackChunkName: "lifestyle" */ '../views/Lifestyle.vue')
+        path: '/social-photos',
+        name: 'social',
+        component: () => import(/* webpackChunkName: "social" */ '../views/SocialPhotos.vue')
     },
     {
         path: '/contact',
         name: 'contact',
         component: () => import(/* webpackChunkName: "contact" */ '../views/Contact.vue')
+    },
+    {
+        path: '/what-others-are-saying',
+        name: 'saying',
+        component: () => import(/* webpackChunkName: "saying" */ '../views/WhatOthersAreSaying.vue')
+    },
+    {
+        path: '/rates',
+        name: 'rates',
+        component: () => import(/* webpackChunkName: "rates" */ '../views/Rates.vue')
     }
 ]
 

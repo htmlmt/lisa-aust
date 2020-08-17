@@ -1,0 +1,21 @@
+label,
+input {
+	display: block;
+}
+
+label {
+	margin-bottom: var(--spacing-xs);
+}
+
+input[type="text"],
+textarea {
+	border: 1px solid var(--gray-400);
+	margin-bottom: var(--spacing-xl);
+	padding: var(--spacing-sm);
+	width: 100%;
+	
+	&:focus {
+		border: 1px solid var(--pink-300);
+		outline: none;
+	}
+}

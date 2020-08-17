@@ -1,5 +1,5 @@
 <template>
-	<div class="u-gap-md u-mb-3xl dd-u-grid dd-u-grid-flow-row" :class="'dd-u-grid-cols-' + columns">
+	<div class="u-gap-md u-masonry u-mb-3xl">
 		<slot />
 	</div>
 </template>
@@ -9,7 +9,7 @@ export default {
 	name: 'Gallery',
 	props: {
 		columns: {
-			type: Number,
+			type: [Number, String],
 			default: 3,
 		},
 	},
