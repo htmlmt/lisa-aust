@@ -2,24 +2,20 @@
     <section class="u-bg-overlay-bottom dd-u-relative">
         <div
             class="
-                u-bg-gray-100
-                
                 dd-u-aspect-21/9
+                dd-u-bg-black
                 dd-u-relative
                 dd-u-overflow-hidden
             "
         >
-            <div>
-                <HeroImage
-                    v-for="(image, index) in images"
-                    
-                    :alt="image.alt"
-                    :class="[index === heroImageShown ? 'dd-u-opacity-100' : 'dd-u-opacity-0']"
-                    :id="`heroImage${index}`"
-                    :key="image.src"
-                    :src="`${publicPath}images/${image.src}`"
-                />
-            </div>
+            <HeroImage
+                v-for="(image, index) in images"
+                
+                :alt="image.alt"
+                :class="[index === heroImageShown ? `dd-u-opacity-100 dd-u-pointer-events-auto` : `dd-u-opacity-0 dd-u-pointer-events-none`]"
+                :key="image.src"
+                :src="`${publicPath}images/${image.src}`"
+            />
         </div>
         
         <div
@@ -70,8 +66,12 @@
                     dd-u-rounded-full
                 "
             >
-                <span v-if="!slideshowPlaying"><img class="dd-u-block" :src="`${publicPath}icons/play.svg`" alt="Play slideshow"></span>
-                <span v-if="slideshowPlaying"><img class="dd-u-block" :src="`${publicPath}icons/pause.svg`" alt="Pause slideshow"></span>
+                <span v-if="!slideshowPlaying">
+                    <img class="dd-u-block" :src="`${publicPath}icons/play.svg`" alt="Play slideshow">
+                </span>
+                <span v-if="slideshowPlaying">
+                    <img class="dd-u-block" :src="`${publicPath}icons/pause.svg`" alt="Pause slideshow">
+                </span>
             </button>
         </div>
     </section>
