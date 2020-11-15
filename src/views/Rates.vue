@@ -1,17 +1,39 @@
 <template>
     <div class="rates u-pt-4xl u-wrapper md:u-pt-0">
         <h1>Rates</h1>
-		<h2>Event photos</h2>
-        <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-        </p>
-        <h2>Social photos</h2>
-        <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-        </p>
-        <h2>Professional portraits</h2>
-        <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-        </p>
+
+        <div
+            v-for="service in services"
+            :key="service.id"
+        >
+            <h2>{{ service.fields["Name"] }}</h2>
+            
+            <div v-html="prettify(service.fields['Rates'])"></div>
+        </div>
     </div>
 </template>
+
+<script>
+import { mapGetters } from 'vuex';
+
+import marked from 'marked';
+
+export default {
+	name: 'Rates',
+	computed: {
+        ...mapGetters([
+            'services',
+        ]),
+	},
+    methods: {
+        prettify: function(content) {
+            return marked(content);
+        },
+    },
+    created() {
+        if (this.services.length === 0) {
+            this.$store.dispatch('getServices');
+        }
+    }
+}
+</script>

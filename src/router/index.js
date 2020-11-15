@@ -16,19 +16,9 @@ const routes = [
         component: () => import(/* webpackChunkName: "meet" */ '../views/MeetLisa.vue')
     },
     {
-        path: '/professional-portraits',
-        name: 'professional',
-        component: () => import(/* webpackChunkName: "professional" */ '../views/ProfessionalPortraits.vue')
-    },
-    {
-        path: '/event-photos',
-        name: 'event',
-        component: () => import(/* webpackChunkName: "event" */ '../views/EventPhotos.vue')
-    },
-    {
-        path: '/social-photos',
-        name: 'social',
-        component: () => import(/* webpackChunkName: "social" */ '../views/SocialPhotos.vue')
+        path: '/services/:url',
+        name: 'service',
+        component: () => import(/* webpackChunkName: "event" */ '../views/Service.vue')
     },
     {
         path: '/contact',

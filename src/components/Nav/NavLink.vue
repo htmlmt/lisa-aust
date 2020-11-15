@@ -1,5 +1,11 @@
 <template>
-	<router-link class="link u-pl-3xl u-py-md u-text-gray-900 dd-u-flex dd-u-no-underline" :to="{ name: view }">{{ text }}</router-link>
+	<router-link
+		:to="{ name: view }"
+
+		class="link u-pl-3xl u-py-md u-text-gray-900 dd-u-flex dd-u-no-underline"
+	>
+		{{ text }}
+	</router-link>
 </template>
 
 <script>

@@ -1,10 +1,14 @@
 <template>
-    <div class="dd-u-flex md:u-block" id="app">
+    <div
+        id="app"
+
+        class="dd-u-flex md:u-block"
+    >
         <Nav />
         
         <div class="u-pl-250 dd-u-w-full md:u-pl-0">
             <div class="dd-u-flex-1">
-                <router-view/>
+                <router-view />
             </div>
         </div>
     </div>
