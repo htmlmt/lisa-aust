@@ -1,5 +1,5 @@
 <template>
-    <div class="u-pt-4xl u-wrapper md:u-pt-0">
+    <div class="u-pb-3xl u-pt-4xl u-wrapper md:u-pt-0">
         <h1 v-if="serviceObject.fields">{{ serviceObject.fields["Name"] }}</h1>
 
         <Gallery>

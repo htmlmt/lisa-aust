@@ -49,12 +49,12 @@
 							{{ service.fields['Name'] }}
 						</router-link>
 					</li>
-					<li class="dd-u-mb-0">
+					<!-- <li class="dd-u-mb-0">
 						<NavLink
 							view="saying"
 							text="What Others Are Saying"
 						/>
-					</li>
+					</li> -->
 					<li class="dd-u-mb-0">
 						<NavLink
 							view="rates"

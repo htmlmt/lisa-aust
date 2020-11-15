@@ -127,12 +127,12 @@
                 Services
             </h2>
             
-            <div class="u-gap-2xl u-wrapper dd-u-grid dd-u-grid-cols-3">
+            <div class="u-gap-2xl u-wrapper dd-u-grid dd-u-grid-cols-3 lt-md:dd-u-grid-cols-1">
                 <div
                     v-for="photo in servicePhotos"
                     :key="photo.id"
                 
-                    class="u-bg-overlay-top u-rounded-md dd-u-overflow-hidden dd-u-relative"
+                    class="u-bg-overlay-top u-rounded-md dd-u-overflow-hidden dd-u-relative md:u-mb-2xl"
                 >
                     <router-link
                         :aria-label="''"
@@ -165,12 +165,12 @@
         
         <section
             aria-labelledby="contact-heading"
-            class="u-bg-gray-100 u-py-2xl"
+            class="u-bg-gray-100 u-py-3xl"
         >
             <div class="u-max-w-700 u-wrapper dd-u-mx-auto">
                 <h2 id="contact-heading">Contact</h2>
                 
-                <form action="https://formsubmit.co/mikejtodd@gmail.com" method="POST">
+                <form action="https://formsubmit.co/lisa-aust@outlook.com" method="POST">
                     <label for="name">Name</label>
                     <input
                         id="name"

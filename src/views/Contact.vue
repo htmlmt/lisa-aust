@@ -5,12 +5,12 @@
         </div>
         
         <section
-            class="u-bg-gray-100 u-py-2xl"
+            class="u-bg-gray-100 u-py-3xl"
         >
             <div
                 class="u-max-w-700 u-wrapper"
             >
-                <form action="https://formsubmit.co/mikejtodd@gmail.com" method="POST">
+                <form action="https://formsubmit.co/lisa-aust@outlook.com" method="POST">
                     <label for="name">Name</label>
                     <input
                         id="name"

@@ -1,5 +1,5 @@
 <template>
-    <div class="rates u-pt-4xl u-wrapper md:u-pt-0">
+    <div class="rates u-pb-3xl u-pt-4xl u-wrapper md:u-pt-0">
         <h1>Rates</h1>
 
         <div
