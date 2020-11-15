@@ -1,17 +1,5 @@
 <template>
 	<div class="u-border-r-1 u-border-r-gray-300 u-border-r-solid u-w-250 dd-u-bg-white dd-u-h-screen dd-u-fixed dd-u-overflow-y-auto md:u-h-auto md:u-static md:u-w-full">
-		<link
-            rel="stylesheet"
-
-            href="/wp-content/themes/lisa/assets/css/design-system.min.css"
-        >
-        
-        <link
-			rel="stylesheet"
-
-			href="/wp-content/themes/lisa/assets/css/lisa-aust.min.css"
-		>
-		
 		<nav class="u-text-sm u-py-xl">
 			<div class="u-mb-2xl u-px-md md:u-mb-0 md:u-mx-auto md:u-p-0 md:u-w-100">
 				<router-link
