@@ -136,8 +136,6 @@ export default {
             const previousPhotoID = previousPhoto.getAttribute('id');
             const previousPhotoURL = previousPhoto.querySelector('img').getAttribute('data-original');
             
-            console.log(previousPhoto.querySelector('img'));
-            
             modal.style.backgroundImage = 'url(' + previousPhotoURL + ')';
             modal.setAttribute('data-current-photo', previousPhotoID);
         },
