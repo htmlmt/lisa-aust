@@ -7,18 +7,36 @@
                 v-for="photo in servicePhotos"
                 :key="photo"
             >
-                <Thumbnail
-                    :alt="servicePhoto(photo).fields['Title']"
-                    :original="servicePhoto(photo).fields['Photo'][0].url"
-                    :src="servicePhoto(photo).fields['Photo'][0].thumbnails.large.url"
-                />
+                <div
+                    class="u-rounded-md dd-u-cursor-pointer dd-u-overflow-hidden js-thumbnail"
+
+                    @click="lightbox"
+                >
+                    <img
+                        :alt="servicePhoto(photo).fields['Title']"
+                        :id="servicePhoto(photo).id"
+                        :src="servicePhoto(photo).fields['Photo'][0].thumbnails.large.url"
+
+                        class="dd-u-block"
+                        
+                        @load="onImageLoad(servicePhoto(photo))"
+                    >
+                    
+                    <img
+                        :class="loadOriginalPhotos ? 'dd-u-sr-only' : 'dd-u-hidden'"
+                        :src="servicePhoto(photo).fields['Photo'][0].url"
+                    >
+                </div>
             </div>
         </Gallery>
         
         <div
             id="modal"
             
-            style="background-color: #000000; background-position: 50% 50%; background-repeat: no-repeat; background-size: contain; display: none; left: 0; height: 100%; position: fixed; top: 0; width: 100%;"
+            :style="{
+                backgroundImage: currentPhoto.id ? 'url(' + currentPhoto.fields['Photo'][0].url + ')' : 'none',
+                display: modalShown ? 'block' : 'none'
+            }"
         >
             <div
                 id="closeModal"
@@ -54,19 +72,28 @@
 import { mapGetters } from 'vuex';
 
 import Gallery from '@/components/Gallery.vue';
-import Thumbnail from '@/components/Thumbnail.vue';
 
 export default {
     name: 'Service',
     components: {
         Gallery,
-        Thumbnail,
     },
+    data() {
+		return {
+			currentPhoto: {},
+            imagesLoaded: 0,
+            loadOriginalPhotos: false,
+            modalShown: false
+		}
+	},
     computed: {
         ...mapGetters([
             'photos',
             'services',
         ]),
+        numberOfServicePhotos: function() {
+            return this.servicePhotos.length;
+        },
         serviceObject: function() {
             if (this.services.length) {
                 return this.services.find(service => service.fields['URL'] === this.$route.params.url);
@@ -98,46 +125,38 @@ export default {
     },
     methods: {
         closeModal: function() {
-            const modal = document.getElementById('modal');
-            
-            modal.style.backgroundImage = '';
-            modal.style.display = 'none';
+            this.modalShown = false;
+        },
+        lightbox: function(event) {
+            this.modalShown = true;
+			this.currentPhoto = this.photos.find(photo => photo.id === event.target.getAttribute('id'));
         },
         nextPhoto: function() {
-            const modal = document.getElementById('modal');
-            const currentPhoto = document.getElementById(modal.getAttribute('data-current-photo'));
-            
-            let nextPhoto;
-            
-            if (currentPhoto.parentNode.nextElementSibling) {
-                nextPhoto = currentPhoto.parentNode.nextElementSibling.querySelector('.js-thumbnail');
-            } else {
-                nextPhoto = document.querySelectorAll('.js-thumbnail')[0];
+            const currentPhotoIndex = this.servicePhotos.indexOf(this.currentPhoto.id);
+            let nextPhotoIndex = 0;
+
+            if (currentPhotoIndex < (this.numberOfServicePhotos - 1)) {
+                nextPhotoIndex = currentPhotoIndex + 1;
             }
+
+            this.currentPhoto = this.photos.find(photo => photo.id === this.servicePhotos[nextPhotoIndex]);
+        },
+        onImageLoad: function(image) {
+            this.imagesLoaded = this.imagesLoaded + 1;
             
-            const nextPhotoID = nextPhoto.getAttribute('id');
-            const nextPhotoURL = nextPhoto.querySelector('img').getAttribute('data-original');
-            
-            modal.style.backgroundImage = 'url(' + nextPhotoURL + ')';
-            modal.setAttribute('data-current-photo', nextPhotoID);
+            if (this.imagesLoaded === this.servicePhotos.length) {
+                this.loadOriginalPhotos = true;
+            }
         },
         previousPhoto: function() {
-            const modal = document.getElementById('modal');
-            const currentPhoto = document.getElementById(modal.getAttribute('data-current-photo'));
-            
-            let previousPhoto;
-            
-            if (currentPhoto.parentNode.previousElementSibling) {
-                previousPhoto = currentPhoto.parentNode.previousElementSibling.querySelector('.js-thumbnail');
-            } else {
-                previousPhoto = document.querySelectorAll('.js-thumbnail')[ document.querySelectorAll('.js-thumbnail').length - 1];
+            const currentPhotoIndex = this.servicePhotos.indexOf(this.currentPhoto.id);
+            let nextPhotoIndex = this.numberOfServicePhotos - 1;
+
+            if (currentPhotoIndex > 0) {
+                nextPhotoIndex = currentPhotoIndex - 1;
             }
-            
-            const previousPhotoID = previousPhoto.getAttribute('id');
-            const previousPhotoURL = previousPhoto.querySelector('img').getAttribute('data-original');
-            
-            modal.style.backgroundImage = 'url(' + previousPhotoURL + ')';
-            modal.setAttribute('data-current-photo', previousPhotoID);
+
+            this.currentPhoto = this.photos.find(photo => photo.id === this.servicePhotos[nextPhotoIndex]);
         },
         servicePhoto: function(id) {
             if (this.photos.length) {
@@ -167,3 +186,17 @@ export default {
 	},
 }
 </script>
+
+<style media="screen">
+    #modal {
+        background-color: #000000;
+        background-position: 50% 50%;
+        background-repeat: no-repeat;
+        background-size: contain;
+        height: 100%;
+        left: 0;
+        position: fixed;
+        top: 0;
+        width: 100%;
+    }
+</style>

@@ -10,6 +10,9 @@
 			:alt="alt"
 			:data-original="original"
 			:src="src"
+			:style="{
+				width: '100%'
+			}"
 
 			class="dd-u-block"
 		>
@@ -23,6 +26,9 @@ export default {
 		alt: {
 			type: String,
 		},
+		id: {
+			type: String
+		},
 		original: {
 			type: String
 		},
@@ -30,18 +36,12 @@ export default {
 			type: String,
 		},
 	},
-	computed: {
-		id: function() {
-			return this.alt.replace(/\W/g,'-').toLowerCase();
-		}
-	},
 	methods: {
         lightbox: function() {
 			const modal = document.getElementById('modal');
 			
             modal.style.backgroundImage = 'url(' + this.original + ')';
 			modal.style.display = 'block';
-			modal.setAttribute('data-current-photo', this.id);
         },
 	}
 }
