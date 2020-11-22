@@ -7,12 +7,15 @@
 		@click="lightbox"
 	>
 		<img
-			:alt="alt"
+			:alt="photo.fields['Title']"
 			:data-original="original"
-			:src="src"
+			:height="photo.fields['Photo'][0].thumbnails.large.height"
+			:src="photo.fields['Photo'][0].thumbnails.large.url"
 			:style="{
+				height: 'auto',
 				width: '100%'
 			}"
+			:width="photo.fields['Photo'][0].thumbnails.large.width"
 
 			class="dd-u-block"
 		>
@@ -23,26 +26,12 @@
 export default {
 	name: 'Thumbnail',
 	props: {
-		alt: {
-			type: String,
-		},
 		id: {
 			type: String
 		},
-		original: {
-			type: String
-		},
-		src: {
-			type: String,
+		photo: {
+			type: Object,
 		},
 	},
-	methods: {
-        lightbox: function() {
-			const modal = document.getElementById('modal');
-			
-            modal.style.backgroundImage = 'url(' + this.original + ')';
-			modal.style.display = 'block';
-        },
-	}
 }
 </script>

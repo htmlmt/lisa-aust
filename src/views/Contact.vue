@@ -78,3 +78,12 @@ export default {
 	},
 };
 </script>
+
+<style media="screen">
+@media only screen and (max-width: 900px) {
+    .contact {
+        margin-top: 172px;
+    }
+}
+</style>
+

@@ -1,6 +1,8 @@
 <template>
-    <div class="u-pb-3xl u-pt-4xl u-wrapper md:u-pt-0">
-        <h1 v-if="serviceObject.fields">{{ serviceObject.fields["Name"] }}</h1>
+    <div class="service u-pb-3xl u-pt-4xl u-wrapper md:u-pt-0">
+        <h1 v-if="serviceObject.fields">
+            {{ serviceObject.fields["Name"] }}
+        </h1>
 
         <Gallery>
             <div
@@ -13,9 +15,13 @@
                     @click="lightbox"
                 >
                     <img
-                        :alt="servicePhoto(photo).fields['Title']"
                         :id="servicePhoto(photo).id"
+
+                        :alt="servicePhoto(photo).fields['Title']"
+                        :height="servicePhoto(photo).fields['Photo'][0].thumbnails.large.height"
                         :src="servicePhoto(photo).fields['Photo'][0].thumbnails.large.url"
+                        style="height: auto; width: 100%;"
+                        :width="servicePhoto(photo).fields['Photo'][0].thumbnails.large.width"
 
                         class="dd-u-block"
                         
@@ -45,7 +51,9 @@
                 style="position: absolute; right: 20px; top: 20px;"
                 
                 @click="closeModal"
-            >Close</div>
+            >
+                Close
+            </div>
             
             <div
                 id="previous"
@@ -54,7 +62,9 @@
                 style="position: absolute; left: 20px; bottom: 20px;"
                 
                 @click="previousPhoto"
-            >Previous</div>
+            >
+                Previous
+            </div>
             
             <div
                 id="next"
@@ -63,7 +73,9 @@
                 style="position: absolute; right: 20px; bottom: 20px;"
                 
                 @click="nextPhoto"
-            >Next</div>
+            >
+                Next
+            </div>
         </div>
     </div>
 </template>
@@ -113,7 +125,7 @@ export default {
                 
                 this.serviceObject.fields['Photos'].forEach((id) => {
                     if (this.photos.find(photo => photo.id === id)) {
-                        if (this.photos.find(photo => photo.id === id).fields['Where should this photo be shown?'].includes('Service page')) {
+                        if (this.photos.find(photo => photo.id === id).fields['Where should this photo be shown?'] && this.photos.find(photo => photo.id === id).fields['Where should this photo be shown?'].includes('Service page')) {
                             photosToInclude.push(id);
                         }
                     }
@@ -123,6 +135,15 @@ export default {
             }
         }
     },
+    created() {
+        if (this.services.length === 0) {
+            this.$store.dispatch('getServices');
+        }
+
+        if (this.photos.length === 0) {
+            this.$store.dispatch('getPhotos');
+        }
+	},
     methods: {
         closeModal: function() {
             this.modalShown = false;
@@ -175,15 +196,6 @@ export default {
             }
         },
     },
-    created() {
-        if (this.services.length === 0) {
-            this.$store.dispatch('getServices');
-        }
-
-        if (this.photos.length === 0) {
-            this.$store.dispatch('getPhotos');
-        }
-	},
 }
 </script>
 
@@ -198,5 +210,12 @@ export default {
         position: fixed;
         top: 0;
         width: 100%;
+        z-index: 200;
+    }
+    
+    @media only screen and (max-width: 900px) {
+        .service {
+            margin-top: 172px;
+        }
     }
 </style>

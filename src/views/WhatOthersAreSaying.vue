@@ -44,3 +44,11 @@ export default {
 	},
 };
 </script>
+
+<style media="screen">
+@media only screen and (max-width: 900px) {
+    .saying {
+        margin-top: 172px;
+    }
+}
+</style>

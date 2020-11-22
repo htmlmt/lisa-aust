@@ -81,3 +81,11 @@ export default {
 	},
 };
 </script>
+
+<style media="screen">
+@media only screen and (max-width: 900px) {
+    .meet {
+        margin-top: 172px;
+    }
+}
+</style>

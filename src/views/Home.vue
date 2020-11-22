@@ -35,7 +35,6 @@
                     dd-u-z-20
                 "
             >
-            
                 <button
                     v-for="(image, index) in heroPhotos"
                     
@@ -50,8 +49,10 @@
                         
                         dd-u-border-none
                         dd-u-cursor-pointer
+                        dd-u-p-0
                         dd-u-rounded-full
                     "
+                    style="padding: 0;"
                     
                     @click="showHeroImage(index)"
                 >
@@ -135,18 +136,18 @@
                     class="u-bg-overlay-top u-rounded-md dd-u-overflow-hidden dd-u-relative md:u-mb-2xl"
                 >
                     <router-link
-                        :aria-label="''"
+                        :aria-label="serviceName(photo.fields['Which service does this photo fall under?'][0])"
                         class="dd-u-absolute dd-u-h-full dd-u-left-0 dd-u-top-0 dd-u-w-full dd-u-z-40"
                         :to="serviceLink(photo.fields['Which service does this photo fall under?'][0])"
                     ></router-link>
                 
-                    <h3 class="u-py-lg dd-u-absolute dd-u-text-white dd-u-uppercase dd-u-w-full dd-u-z-30">{{ serviceName(photo.fields["Which service does this photo fall under?"][0]) }}</h3>
+                    <h3 class="u-py-lg dd-u-absolute dd-u-text-white dd-u-uppercase dd-u-w-full dd-u-z-30">
+                        {{ serviceName(photo.fields["Which service does this photo fall under?"][0]) }}
+                    </h3>
 
                     <div class="dd-u-relative dd-u-z-10">
                         <Thumbnail
-                            :src="photo.fields['Photo'][0].url"
-
-                            :alt="photo.fields['Title']"
+                            :photo="photo"
                         />
                     </div>
                 </div>
@@ -160,7 +161,9 @@
                 :to="{name: 'rates'}"
 
                 class="button dd-u-mx-auto"
-            >Read more info on rates</router-link>
+            >
+                Read more info on rates
+            </router-link>
         </section>
         
         <section
@@ -168,9 +171,14 @@
             class="u-bg-gray-100 u-py-3xl"
         >
             <div class="u-max-w-700 u-wrapper dd-u-mx-auto">
-                <h2 id="contact-heading">Contact</h2>
+                <h2 id="contact-heading">
+                    Contact
+                </h2>
                 
-                <form action="https://formsubmit.co/lisa-aust@outlook.com" method="POST">
+                <form
+                    action="https://formsubmit.co/lisa-aust@outlook.com"
+                    method="POST"
+                >
                     <label for="name">Name</label>
                     <input
                         id="name"
@@ -233,7 +241,7 @@ export default {
         ]),
         heroPhotos: function() {
             if (this.photos.length) {
-                return this.photos.filter(photo => photo.fields["Where should this photo be shown?"][0] === "Hero");
+                return this.photos.filter(photo => photo.fields['Where should this photo be shown?']).filter(photo => photo.fields['Where should this photo be shown?'].includes('Hero'));
             } else {
                 return [];
             }
@@ -250,7 +258,7 @@ export default {
         },
         ratesContent: function() {
             if (this.sections.length) {
-                let content = this.sections.find(section => section.fields["Name"] === "Homepage rates").fields["Content"];
+                let content = this.sections.find(section => section.fields['Name'] === 'Homepage rates').fields['Content'];
                 content = marked(content);
 
                 return content;
@@ -260,34 +268,11 @@ export default {
         },
         servicePhotos: function() {
             if (this.photos.length) {
-                return this.photos.filter(photo => photo.fields["Where should this photo be shown?"][0] === "Homepage");
+                return this.photos.filter(photo => photo.fields['Where should this photo be shown?']).filter(photo => photo.fields['Where should this photo be shown?'].includes('Homepage'));
             } else {
                 return [];
             }
         }
-    },
-    methods: {
-        serviceName: function(id) {
-            if (this.services.length) {
-                return this.services.find(service => service.id === id).fields['Name'];
-            } else {
-                return '';
-            }
-        },
-        serviceLink: function(id) {
-            if (this.services.length) {
-                return '/services/' + this.services.find(service => service.id === id).fields['URL'];
-            } else {
-                return '';
-            }
-        },
-        showHeroImage: function(index) {
-            this.heroImageShown = index;
-            this.slideshowPlaying = false;
-        },
-        playPauseSlideshow: function() {
-            this.slideshowPlaying = !this.slideshowPlaying;
-        },
     },
     created() {
         if (this.services.length === 0) {
@@ -314,5 +299,28 @@ export default {
             }
         }, 5000);
 	},
+    methods: {
+        serviceName: function(id) {
+            if (this.services.length) {
+                return this.services.find(service => service.id === id).fields['Name'];
+            } else {
+                return '';
+            }
+        },
+        serviceLink: function(id) {
+            if (this.services.length) {
+                return '/services/' + this.services.find(service => service.id === id).fields['URL'];
+            } else {
+                return '';
+            }
+        },
+        showHeroImage: function(index) {
+            this.heroImageShown = index;
+            this.slideshowPlaying = false;
+        },
+        playPauseSlideshow: function() {
+            this.slideshowPlaying = !this.slideshowPlaying;
+        },
+    },
 };
 </script>

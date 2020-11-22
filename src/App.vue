@@ -6,7 +6,7 @@
     >
         <Nav />
         
-        <div class="u-pl-250 dd-u-w-full md:u-pl-0">
+        <div class="u-content u-pl-250 dd-u-w-full md:u-pl-0">
             <div class="dd-u-flex-1">
                 <router-view />
             </div>
@@ -83,4 +83,10 @@ export default {
     @import "@/scss/utilities/_typography.scss";
     @import "@/scss/utilities/_backgrounds.scss";
     @import "@/scss/utilities/_borders.scss";
+    
+    @media only screen and (max-width: 900px) {
+        .u-content {
+            margin-top: 148px;
+        }
+    }
 </style>
