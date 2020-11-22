@@ -235,6 +235,7 @@ export default {
 	},
     computed: {
         ...mapGetters([
+            'quotes',
             'photos',
             'sections',
             'services',
@@ -285,6 +286,10 @@ export default {
 
         if (this.sections.length === 0) {
             this.$store.dispatch('getSections');
+        }
+
+        if (this.quotes.length === 0) {
+            this.$store.dispatch('getQuotes');
         }
 
         var vueInstance = this;

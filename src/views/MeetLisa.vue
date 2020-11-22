@@ -13,7 +13,10 @@
                     Contact
                 </h2>
 
-                <form action="https://formsubmit.co/lisa-aust@outlook.com" method="POST">
+                <form
+                    action="https://formsubmit.co/lisa-aust@outlook.com"
+                    method="POST"
+                >
                     <label for="name">Name</label>
                     <input
                         id="name"
@@ -56,6 +59,7 @@ export default {
     name: 'MeetLisa',
     computed: {
         ...mapGetters([
+            'quotes',
             'sections',
             'services',
         ]),
@@ -77,6 +81,10 @@ export default {
         
         if (this.services.length === 0) {
             this.$store.dispatch('getServices');
+        }
+
+        if (this.quotes.length === 0) {
+            this.$store.dispatch('getQuotes');
         }
 	},
 };

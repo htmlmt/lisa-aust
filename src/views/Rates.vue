@@ -22,6 +22,7 @@ export default {
 	name: 'Rates',
 	computed: {
         ...mapGetters([
+            'quotes',
             'services',
         ]),
 	},
@@ -33,6 +34,10 @@ export default {
     created() {
         if (this.services.length === 0) {
             this.$store.dispatch('getServices');
+        }
+
+        if (this.quotes.length === 0) {
+            this.$store.dispatch('getQuotes');
         }
     }
 }

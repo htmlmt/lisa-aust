@@ -69,16 +69,23 @@
 							{{ service.fields['Name'] }}
 						</router-link>
 					</li>
-					<!-- <li
+					<li
+						v-if="quotes.length > 0"
+					
 						class="dd-u-mb-0"
 					
 						@click="closeNav"
 					>
-						<NavLink
-							view="saying"
-							text="What Others Are Saying"
-						/>
-					</li> -->
+						<router-link
+							to="/what-others-are-saying"
+
+							class="link u-pl-3xl u-py-md u-text-gray-900 dd-u-flex dd-u-no-underline"
+							
+							@click="closeNav"
+						>
+							What Others Are Saying
+						</router-link>
+					</li>
 					<li
 						class="dd-u-mb-0"
 					
@@ -150,6 +157,7 @@ export default {
 	},
 	computed: {
         ...mapGetters([
+			'quotes',
             'services',
         ]),
 	},

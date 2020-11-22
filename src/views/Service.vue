@@ -100,6 +100,7 @@ export default {
 	},
     computed: {
         ...mapGetters([
+            'quotes',
             'photos',
             'services',
         ]),
@@ -142,6 +143,10 @@ export default {
 
         if (this.photos.length === 0) {
             this.$store.dispatch('getPhotos');
+        }
+
+        if (this.quotes.length === 0) {
+            this.$store.dispatch('getQuotes');
         }
 	},
     methods: {
