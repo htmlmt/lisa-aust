@@ -98,7 +98,7 @@
 							
 							@click="closeNav"
 						>
-							Rates
+							Pricing
 						</router-link>
 					</li>
 				</ul>
