@@ -3,6 +3,14 @@
         <h1 v-if="serviceObject.fields">
             {{ serviceObject.fields["Name"] }}
         </h1>
+        
+        <p>
+            {{ serviceObject.fields["Rates Teaser"] }}
+        </p>
+        
+        <p class="u-mb-2xl">
+            <a class="button" href="/rates">Pricing</a>
+        </p>
 
         <Gallery>
             <div
