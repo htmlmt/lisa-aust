@@ -92,7 +92,7 @@
 						@click="closeNav"
 					>
 						<router-link
-							to="/#/rates"
+							to="/rates"
 
 							class="link u-pl-3xl u-py-md u-text-gray-900 dd-u-flex dd-u-no-underline"
 							
