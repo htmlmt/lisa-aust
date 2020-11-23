@@ -9,7 +9,7 @@
         </p>
         
         <p class="u-mb-2xl">
-            <a class="button" href="/rates">Pricing</a>
+            <a class="button" href="/#/rates">Pricing</a>
         </p>
 
         <Gallery>
